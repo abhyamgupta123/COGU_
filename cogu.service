@@ -1,0 +1,22 @@
+[Unit]
+Description=cogu
+After=network-online.target systemd-user-sessions.service 
+Wants=network-online.target
+Before=getty.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python2.7 /usr/local/bin/cogu_sub_algo.py
+RemainAfterExit=no
+Environment="DISP"
+Environment="x_auth"
+Environment="cogu_var_home"
+Environment="cogu_var_user"
+Restart=always
+RestartSec=3s
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=cogu
+
+[Install]
+WantedBy=graphical.target
