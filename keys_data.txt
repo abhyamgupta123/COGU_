@@ -1,0 +1,5 @@
+#PUBNUB_MODULE
+pubnub_pub_key=""
+pubnub_sub_key=""
+pubnub_device_name=""
+pubnub_channel=""
