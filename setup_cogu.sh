@@ -1,4 +1,5 @@
 #!/bin/bash
+name=$(whoami)
 source ./keys_data.txt
 echo " "
 systemctl --user import-environment
