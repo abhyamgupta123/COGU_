@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+                app:title="@string/app_name"
+                app:titleTextColor="@android:color/white"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="-6dp" />
+
+            <ImageView
+                android:id="@+id/connection_status"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_marginStart="77dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.53"
+                app:srcCompat="@drawable/comm_input" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativelayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appbar"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorPrimary"
+        android:padding="12dp">
+
+        <ScrollView
+            android:layout_width="392dp"
+            android:layout_height="535dp"
+            android:layout_above="@id/btn_submit_message"
+            android:layout_marginBottom="1dp">
+
+            <TextView
+                android:id="@+id/messages_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:enabled="true"
+                android:gravity="start|top"
+                android:importantForAutofill="no"
+                android:textColor="@color/texting"
+                tools:ignore="LabelFor" />
+        </ScrollView>
+
+
+        <Button
+            android:id="@+id/btn_submit_message"
+            android:layout_width="244dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/entry_update_text"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="0dp"
+            android:background="@color/button"
+            android:minWidth="140sp"
+            android:text="Send command "
+            android:textSize="14sp"
+            tools:ignore="HardcodedText" />
+
+        <AutoCompleteTextView
+            android:id="@+id/entry_update_text"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/comm_input"
+            android:drawableStart="@drawable/ic_dollar_sign_foreground"
+            android:drawablePadding="-30dp"
+            android:ems="5"
+            android:hint="enter command"
+            android:imeOptions="actionSend"
+            android:importantForAutofill="auto"
+            android:inputType="text"
+            android:textColor="@color/texting"
+            android:textSize="14sp"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/sys_info"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_above="@id/entry_update_text"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="0dp"
+            android:background="@color/button"
+            android:minWidth="100sp"
+            android:onClick="sendrequest"
+            android:text="GET"
+            android:textSize="14sp"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "926623393236",
+    "firebase_url": "https://cogucommand.firebaseio.com",
+    "project_id": "cogucommand",
+    "storage_bucket": "cogucommand.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926623393236:android:13b841b7c506017452e241",
+        "android_client_info": {
+          "package_name": "co.parwaan.cogu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926623393236-kkjegupg3do1ltond9h5aitgbopi8m0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLOWWvNFnohwIqW9EodE1Iu_Vcav8_wYw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926623393236-kkjegupg3do1ltond9h5aitgbopi8m0g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926623393236:android:b4d467543dc1460252e241",
+        "android_client_info": {
+          "package_name": "com.app.cogu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926623393236-kkjegupg3do1ltond9h5aitgbopi8m0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLOWWvNFnohwIqW9EodE1Iu_Vcav8_wYw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926623393236-kkjegupg3do1ltond9h5aitgbopi8m0g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

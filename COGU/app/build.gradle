@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.app.cogu"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'com.android.support:support-annotations:28.0.0'
+    // firebase:-
+    implementation 'com.google.firebase:firebase-auth:19.4.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'com.google.firebase:firebase-firestore:21.7.0'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // add PubNub Android-Java SDK here at that bottom
+    implementation group: 'com.pubnub', name: 'pubnub-gson', version: '4.33.0'
+
+    //Picasso library
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Fingerprint:--
+    implementation 'androidx.biometric:biometric:1.1.0-alpha02'
+
+    //Recycleview:--
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    //appbar
+//    compile 'com.android.support:design:22.2.0'
+
+    // to make toolbar scrollable hidden
+    implementation 'com.google.android.material:material:1.0.0-rc01'
+
+    // for firestore's firebaseui
+    implementation 'com.firebaseui:firebase-ui-firestore:6.3.0'
+
+}

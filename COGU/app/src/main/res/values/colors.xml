@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#263237</color>
+    <color name="colorPrimaryDark">#1e282d</color>
+    <color name="colorAccent">#1e282d</color>
+    <color name="button">#48565C</color>
+    <color name="texting">#77A69D</color>
+    <color name="input_text">#394749</color>
+    <color name="card">#2E393A</color>
+    <color name="border_sys_info">#1C2122</color>
+    <color name="channel_card">#24292C</color>
+    <color name="channel_card_border">#1133393C</color>
+    <color name="channel_background">#3C4040</color>
+    <color name="signin_button">#658E86</color>
+    <color name="toolbar_text">#21ADBA</color>
+    <color name="welcome_toolbar">#094747</color>
+    <color name="temp">#3F4343</color>
+</resources>
