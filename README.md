@@ -127,6 +127,7 @@ switching on and off.***
 <img src="Docs/images/circuit_diagram.png">
 
 <br>
+
 >**It’s strongly recommended to power the relay module with an external
 power supply rather than providing all power from NodeMCU as it’s
 current rating is very low and usually operate on 3.3V while the relay
