@@ -8,6 +8,7 @@ In present world, the need of the hour is to get the control and how easy it is 
 > The app and site is under development more features will shortly be available in the future which enables the support to windows and more features with just the touch of a button.
 
 <br>
+
 ## Use cases
 - You are working on a secret project and your PC contains sensitive information. You leave your home/office in a hurry and are worried whether you locked your PC or not. This is where our App comes in. Using COGU you can remotely lock your PC, preventing it from prying eyes.
 
@@ -34,6 +35,8 @@ The primary step is to obtain pubnub's publisher subscriber key from their site.
 - Go to KEYS section and copy your publisher and subscriber keys from the demo keyset.
 
 > These API keys are very sensitive please don't expose your keys in public make it private to you only otherwise someone can hack to your system.
+
+<br>
 
 ### Desktop client
 >***Run each and every command without sudo and give the sudo password only when it asks or prompts.***
@@ -64,11 +67,15 @@ The primary step is to obtain pubnub's publisher subscriber key from their site.
 Now you are ready with your Desktop client.
 You can check the log files if in case of any issue , present at `/var/local/cogu.log` and `/var/local/cogu_logging.log`.
 
+<br>
+
 ### Configuring App
 
 Now you can just open the `COGU` folder with your android studio and just run it to for your specific mobile device. or you can download the apk file from the [link]().
 
 > The link is not working currently it will be available soon. For now you have to run the project in android studio only. **Sorry for inconvenience**.
+
+<br>
 
 ### Configuring IoT
 - Open the nodemcu.ino file in `Arduino_iot/nodemcu` folder through Arduino IDE.
@@ -120,7 +127,7 @@ switching on and off.***
 <img src="Docs/images/circuit_diagram.png">
 
 <br>
->*It’s strongly recommended to power the relay module with an external
+> *It’s strongly recommended to power the relay module with an external
 power supply rather than providing all power from NodeMCU as it’s
 current rating is very low and usually operate on 3.3V while the relay
 demands 5V, It may lead to fluctuation of light thereby damaging the
