@@ -7,7 +7,7 @@ In present world, the need of the hour is to get the control and how easy it is 
 
 > The app and site is under development more features will shortly be available in the future which enables the support to windows and more features with just the touch of a button.
 
-
+<br>
 ## Use cases
 - You are working on a secret project and your PC contains sensitive information. You leave your home/office in a hurry and are worried whether you locked your PC or not. This is where our App comes in. Using COGU you can remotely lock your PC, preventing it from prying eyes.
 
@@ -15,7 +15,7 @@ In present world, the need of the hour is to get the control and how easy it is 
 
 - It is not rare that we move out of our rooms without switching off the appliances. COGU helps you to remotely switch on/off your electrical appliances and helps both your pockets and our environment by preserving electricity.
 
-- Using our App you can save your valuable time. Imagine this, you are minutes away from your home. You can remotely switch on your PC and all the electrical appliances of your room, so that when you reach home you can directly start working on what’s important rather than waiting for your PC to boot up. 
+- Using our App you can save your valuable time. Imagine this, you are minutes away from your home. You can remotely switch on your PC and all the electrical appliances of your room, so that when you reach home you can directly start working on what’s important rather than waiting for your PC to boot up.
 
 
 ## How to set up:-
