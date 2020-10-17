@@ -91,7 +91,7 @@ Now you can just open the `COGU` folder with your android studio and just run it
 
 - Setup the Arduino IDE by `File -> Preferences`, and add the following url to ​`Additional Board Manager URLs` ​ section.
 and click ok.
- - >http://arduino.esp8266.com/stable/package_esp8266com_index.json
+  >http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
 - Now add the NodeMCU board to Arduino IDE by navigating `Tools -> Boards -> Board Manager`. Search for `esp8266` and install the board.
 
