@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,8 +25,8 @@ import java.util.Objects;
 
 public class loginactivity extends AppCompatActivity {
 
+    private static final String TAG = loginactivity.class.getName();
     FirebaseAuth fauth;
-
 
 
 
@@ -42,7 +44,8 @@ public class loginactivity extends AppCompatActivity {
         final EditText pass     = (EditText) findViewById( R.id.password );
         final ProgressBar progressBar = (ProgressBar) findViewById( R.id.loading );
         TextView register_new_user    = (TextView) findViewById( R.id.register_new );
-        Button login            = (Button)   findViewById( R.id.login );
+        TextView forgetPassword       = (TextView) findViewById( R.id.forget_pass );
+        Button login            = (Button) findViewById( R.id.login );
 
         // get firebase instance
         fauth = FirebaseAuth.getInstance();
@@ -99,6 +102,36 @@ public class loginactivity extends AppCompatActivity {
                 finish();
             }
         } );
+
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Emailid  = email.getText().toString().trim();
+
+                if (TextUtils.isEmpty( Emailid )){
+                    email.setError( "Required" );
+                    return;
+                }
+
+                progressBar.setVisibility( View.VISIBLE );
+
+                fauth.sendPasswordResetEmail( Emailid ).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            progressBar.setVisibility(View.INVISIBLE);
+                            Log.d(TAG, "reset link is sent on email id.");
+                            Toast.makeText(loginactivity.this, "Password reset link sent on registered Email.", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Log.d(TAG, "Link is not sent due to some error.");
+                            Toast.makeText(loginactivity.this, "Try again, Some error occurred.", Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility( View.INVISIBLE );
+                        }
+                    }
+                });
+
+            }
+        });
 
     }
 }

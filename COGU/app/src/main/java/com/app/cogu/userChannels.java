@@ -20,8 +20,10 @@ import android.widget.Toast;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.firebase.ui.firestore.ObservableSnapshotArray;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -39,7 +41,7 @@ import java.util.Map;
 
 public class userChannels extends AppCompatActivity {
 
-    private static final String TAG = "userChannels";
+    private static final String TAG = userChannels.class.getName();
 
 
     // initialinsing some global variables required:-
@@ -88,7 +90,6 @@ public class userChannels extends AppCompatActivity {
 
 
         rvchannel = (RecyclerView) findViewById( R.id.channelRecycleview );
-
 
 
         // setting firebase instances:-
@@ -169,6 +170,7 @@ public class userChannels extends AppCompatActivity {
         rvchannel.setLayoutManager( new LinearLayoutManager( userChannels.this ) );
     }
 
+    // for refreshing the channel names list:-
     private void refresh( ) {
 
 
@@ -182,7 +184,7 @@ public class userChannels extends AppCompatActivity {
 
     }
 
-
+    // making the menu item attached to the current activity:-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_channel, menu);
@@ -192,6 +194,7 @@ public class userChannels extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            // logging out from current user account:-
             case R.id.logout:
                 Toast.makeText( this, "Logging Out", Toast.LENGTH_SHORT ).show();
                 FirebaseAuth.getInstance().signOut();
@@ -199,9 +202,30 @@ public class userChannels extends AppCompatActivity {
                 finish();
                 return true;
 
+            // refreshing the list of names of channels:-
             case R.id.refresh:
                 Toast.makeText( this, "Refreshing", Toast.LENGTH_SHORT ).show();
-                refresh( );
+                refresh();
+                return true;
+
+            // Handling reset password when logined:-
+            case R.id.reset_pass:
+                fauth.sendPasswordResetEmail( fauth.getCurrentUser().getEmail() ).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "reset link is sent on email id.");
+                            Toast.makeText(userChannels.this, "Password reset link sent on registered Email.", Toast.LENGTH_SHORT).show();
+                            FirebaseAuth.getInstance().signOut();
+                            startActivity( new Intent( userChannels.this, loginactivity.class ) );
+                            finish();
+
+                        }else{
+                            Log.d(TAG, "Link is not sent due to some error.");
+                            Toast.makeText(userChannels.this, "Try again, Some error occurred.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
         }
         return super.onOptionsItemSelected( item );
     }
