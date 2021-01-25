@@ -134,9 +134,9 @@ class MySubscribeCallback(SubscribeCallback):
               print("timetoken: %s" % envelope.result.timetoken)
               pass
 
-        elif (str(event.message['comm']) == "systemctl suspend"):
+        elif (str(event.message['comm']) == "systemctl suspend" or str(event.message['comm']) == "suspend"):
           os.system("notify-send 'COGU' 'Going to sleep..!!'")
-          comm = str(event.message['comm'])
+          comm = "systemctl suspend"
           the_message = {}
           the_message["comm"] = "command_status"
           the_message["message"] = "System is suspended"
@@ -154,9 +154,9 @@ class MySubscribeCallback(SubscribeCallback):
 
           os.system(comm)
 
-        elif (str(event.message['comm']) == "shutdown now"):
+        elif (str(event.message['comm']) == "shutdown now" or str(event.message['comm']) == "shutdown"):
           os.system("notify-send 'COGU' 'Shutting Down System..!!'")
-          comm = str(event.message['comm'])
+          comm = "shutdown now"
           the_message = {}
           the_message["comm"] = "command_status"
           the_message["message"] = "System is Shutting Down..."
@@ -399,20 +399,15 @@ class MySubscribeCallback(SubscribeCallback):
             if envelope.status.is_error():
                 print("[PUBLISH: fail]")
                 print("error: %s" % status.error)
-                pass
 
             else:
                 print("[PUBLISH: sent]")
                 print("timetoken: %s" % envelope.result.timetoken)
-                pass
 
 	    os.system("echo " + the_message["message"])
 
-        pass
-
     except :
-        print("Error has occured and handled.")
-        pass
+        print("Error has occured and handled. Maybe message doesn't contained desired values")
 
 
 

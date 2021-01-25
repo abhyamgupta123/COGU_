@@ -15,4 +15,7 @@
     <color name="toolbar_text">#21ADBA</color>
     <color name="welcome_toolbar">#094747</color>
     <color name="temp">#3F4343</color>
+    <color name="speech_bubble_user">#28113C</color>
+    <color name="speech_bubble_agent">#28113C</color>
+    <color name="chat_backgrounnd">#132D37</color>
 </resources>

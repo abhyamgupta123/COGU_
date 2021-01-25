@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity
 
     private PubNub pubnub;
     private String theChannel;
-    private String theEntry ;
+    private String devide_name ;
     private ImageView connection_status;
 
 
@@ -81,11 +83,6 @@ public class MainActivity extends AppCompatActivity
 
     // contains the list of iot devices:-
     private List<String> iot_devices = new ArrayList<>(  );
-
-//    FirebaseAuth fauth;
-//    FirebaseFirestore fstore;
-
-
 
 
     @Override
@@ -105,17 +102,16 @@ public class MainActivity extends AppCompatActivity
         String subkey_local = intent.getStringExtra( "subkey" );
         String uuid_local   = intent.getStringExtra( "uuid" );
         theChannel = channel_name;
-        theEntry   = system_name;
+        devide_name   = system_name;
         pubkey     = pubkey_local;
         subkey     = subkey_local;
         app_uuid   = uuid_local;
 
-        Log.d( TAG, theChannel + " " + theEntry + " " + pubkey + " " + subkey + " " + app_uuid );
+        Log.d(TAG, "user subscribed to channel successfully");
         // to hide action bar    // this is to set custom tool baar for this activity only:-
 //        Objects.requireNonNull( getSupportActionBar() ).hide();
 
         //Create a thread pool with a single thread//
-
         Executor newExecutor = Executors.newSingleThreadExecutor();
 
         final MainActivity activity = this;
@@ -164,7 +160,7 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void run() {
 //                        entryUpdateText  = findViewById(R.id.entry_update_text);
-                        submitUpdate(theEntry, entryUpdateText.getText().toString());
+                        submitUpdate(devide_name, entryUpdateText.getText().toString());
                         entryUpdateText.setText("");
                     }
                 } );
@@ -217,7 +213,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        Log.d( TAG, "testinn");
         // Initialisation:-
         PNConfiguration pnConfiguration = new PNConfiguration();
         // replace the key placeholders with your own PubNub publish and subscribe keys
@@ -257,7 +252,7 @@ public class MainActivity extends AppCompatActivity
                             for (PNHereNowOccupantData occupant : channelData.getOccupants()) {
 //                                displayMessage( "UUID", occupant.getUuid() );
 //                                displayMessage( "State", String.valueOf( occupant.getState() ) );
-                                if (!occupant.getUuid().equals( theEntry )){
+                                if (!occupant.getUuid().equals( devide_name )){
                                     connection_status.setImageResource( R.drawable.ic_offline_status );
                                     Log.d(TAG, "System is offline" );
                                 }else{
@@ -384,10 +379,10 @@ public class MainActivity extends AppCompatActivity
             public void presence(PubNub pubnub, PNPresenceEventResult event) {
                 displayMessage("[PRESENCE: " + event.getEvent() + ']',
                         "uuid: " + event.getUuid() + ", channel: " + event.getChannel());
-                if(event.getUuid().equals( theEntry) && (event.getEvent().equals( "leave" ) || event.getEvent().equals( "timeout" ))){
+                if(event.getUuid().equals( devide_name) && (event.getEvent().equals( "leave" ) || event.getEvent().equals( "timeout" ))){
                     connection_status.setImageResource( R.drawable.ic_offline_status );
                     Log.d(TAG, "System is offline" + " Pubnub event log" );
-                }else if (event.getUuid().equals( theEntry) && event.getEvent().equals( "join" )){
+                }else if (event.getUuid().equals( devide_name) && event.getEvent().equals( "join" )){
                     connection_status.setImageResource( R.drawable.ic_online_status );
                     Log.d(TAG, "System is online and server is just joined" + " Pubnub event log" );
                 }
@@ -551,7 +546,40 @@ public class MainActivity extends AppCompatActivity
 
     public void sendrequest(View view){
 
-        submitUpdate(theEntry, "requestSysActivity");
+        submitUpdate(devide_name, "requestSysActivity");
 
+    }
+
+    // making the menu item attached to the current activity:-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_activity_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            // logging out from current user account:-
+            case R.id.menu_logout:
+                Toast.makeText( this, "Logging Out", Toast.LENGTH_SHORT ).show();
+                FirebaseAuth.getInstance().signOut();
+                startActivity( new Intent( MainActivity.this, loginactivity.class ) );
+                finish();
+                return true;
+
+            case R.id.menu_chat:
+                Toast.makeText(MainActivity.this, "Openeing Chatting Interface", Toast.LENGTH_SHORT).show();
+                Intent chatactivity = new Intent( this, chatService.class );
+                chatactivity.putExtra( "channel_name", theChannel );
+                chatactivity.putExtra( "deviceName", devide_name );
+                chatactivity.putExtra( "pubkey", pubkey );
+                chatactivity.putExtra( "subkey", subkey );
+                chatactivity.putExtra( "uuid", app_uuid );
+                startActivity( chatactivity );
+                return true;
+
+        }
+        return super.onOptionsItemSelected( item );
     }
 }

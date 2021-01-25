@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/commands"
+    <item android:title="Chat"
+        android:id="@+id/menu_chat"
+        app:showAsAction="never"/>
+    <item android:id="@+id/menu_cammands"
         android:title="Commands"
         app:showAsAction="never"/>
-    <item android:id="@+id/refresh"
-        android:title="Refresh"
-        app:showAsAction="never"/>
-    <item android:id="@+id/reset_pass"
-        android:title="Reset Password"
-        app:showAsAction="never"/>
-    <item android:id="@+id/logout"
+    <item android:id="@+id/menu_logout"
         android:title="Logout"
         app:showAsAction="never"/>
 </menu>
