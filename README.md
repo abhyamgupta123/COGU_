@@ -25,7 +25,7 @@ This software comes with three platform support:
   - Iot (NodeMcU)
   - Desktop client
 
-So follow the individually for each of the side to set it up completely.
+So follow the individually for each of  the side to set it up completely.
 
 ### Pubnub Platform Configuration
 The primary step is to obtain pubnub's publisher subscriber key from their site. As we are using their platforms and APIs for this project. To do so folow the instructions:-
